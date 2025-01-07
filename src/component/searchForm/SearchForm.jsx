@@ -52,9 +52,7 @@ function SearchForm( { search, setSearch, getApiData } ) {
             
             ease:"elastic",
             onComplete: () => {
-              gsap.to(buttonReload.current, { y: 0, duration: 3, ease:"elastic", onComplete: () => {
-                gsap.to(buttonReload.current, { rotationY: 360, rotateX: 360, duration: 2, yoyo: true, repeat: -1})
-               }
+              gsap.to(buttonReload.current, { y: 0, duration: 3, ease:"elastic"
             });
             }
       });
