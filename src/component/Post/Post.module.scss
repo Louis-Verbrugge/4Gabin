@@ -1,9 +1,50 @@
 
+:root{
+    --borderRaduis: 25px
+}
 
 .post{
     border: solid 3px rgb(105, 105, 105);
-    border-radius: 25px;
+    border-radius: var(--borderRaduis);
     padding: 10px;
     margin: 10px;
-    width: 300px;
+    width: 500px;
+
+    img{
+        width: 100%;
+        height: 300px;
+        align-items: center;
+        border-radius: var(--borderRaduis);
+        object-fit: cover;
+    }
+
+    .texte{
+        width: 80%;
+        margin: auto;
+    }
+
+    button{
+        background-color: rgb(179, 175, 175);
+        padding: 10px 20px;
+        border-radius: var(--borderRaduis);
+        margin: auto;
+        display: flex;
+        color: white;
+
+    }
+
+    .info{
+        
+
+        .moreText{
+            color: rgb(0, 122, 18);
+            font-size: 2rem;
+            text-decoration: underline;
+        }
+
+        .moreText:hover{
+            cursor: pointer;
+            
+        }
+    }   
 }

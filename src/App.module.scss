@@ -1,7 +1,19 @@
 
 
+html{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
 .displayAllPosts {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
+    justify-content: space-around;
+    
+}   

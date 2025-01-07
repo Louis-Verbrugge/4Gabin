@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "axios": "^1.7.9",
+    "gsap": "^3.12.5",
+    "ldrs": "^1.0.2",
     "process": "^0.11.10",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "require": "^2.4.20"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
