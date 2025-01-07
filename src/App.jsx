@@ -3,41 +3,56 @@
 
 import Post from './component/Post/Post';
 import SearchForm from './component/searchForm/SearchForm';
-import style from './App.module.scss';
+import styles from './App.module.scss';
 
 import { useEffect, useState } from 'react';
+
+import axios from 'axios'
+
+const API_ENDPOINT = 'https://hn.algolia.com/api/v1/search?query=';
 
 function App() {
 
   const [search, setSearch] = useState(localStorage.getItem('search') || '')
 
+  const [dataListApi, setDataListApi] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      axios({
+        method: 'get',
+        url: API_ENDPOINT,
+
+      
+      })
+        .then(function (response) {
+
+            console.log(response.data.hits)
+            setDataListApi(response.data.hits)
+        })  
+
+        .catch(function (error) {
+          console.error('Erreur lors de la récupération des actualités :', error);
+        })
 
 
-  const list = [
-    {
-      id: 1,
-      title: "React",
-      url: 'https://reactjs.org',
-      author: 'Jordan Walke',
-      num_comments: 3,
-      points: 4,
-    },
-    {
-      id: 2,
-      title: "Redux",
-      url: 'https://redux.js.org',
-      author: 'Dan Abramov, Andrew Clark',
-      num_comments: 2,
-      points: 5,
-    }
-  ]
-  
+        .finally(function () {
+        })
+    };
+    fetchData();
+  }, []);
 
 
   function displayAllPosts() {
 
-    let listeAllPostsSort = list.filter((item, index) => {
-      if (item.title.toLowerCase().includes(search.toLowerCase()) ) return item;
+
+    
+    let listeAllPostsSort = dataListApi.filter((item, index) => {
+
+      if (item.title !== undefined) {
+        if (item.title.toLowerCase().includes(search.toLowerCase()) ) return item;
+      }
+
     })
 
     return listeAllPostsSort.map((item, index) => {
@@ -50,9 +65,12 @@ function App() {
     <>
       <SearchForm search={search} setSearch={setSearch} />
 
-      <div className={style.displayAllPosts}>
+      <h2>{process.env.API_ENDPOINT}</h2>
+
+      <div className={styles.displayAllPosts}>
         {displayAllPosts()}
       </div>
+
 
     </>
 
