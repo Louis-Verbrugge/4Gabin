@@ -7,9 +7,9 @@ export const initialState = {
   }
   
 export function reducer(state, action) {
-    console.log("gg: ")
+    //console.log("gg: ")
   
-    console.log(action.type)
+    //console.log(action.type)
   
     switch(action.type) {
       case 'GET_API_DATA':

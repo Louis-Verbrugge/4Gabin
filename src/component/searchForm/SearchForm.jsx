@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 
-function SearchForm( { search, setSearch, getApiData } ) {
+function SearchForm( { search, setSearch, getApiData, searchButton } ) {
 
 
   useEffect(() => {
@@ -59,14 +59,18 @@ function SearchForm( { search, setSearch, getApiData } ) {
     }
   }, []);
 
-  return (
-    <form className={styles.searchForm}>
-        <label htmlFor='search'>recherche</label>
-        <input ref={barSearch}  className={styles.searchBar} type='search' value={search} onChange={(event) => setSearch(event.target.value)}></input>
-        <button ref={buttonReload} onClick={getApiData}>reload</button>
-    </form>
+  function reload() {
+    window.location.reload();
+  }
 
-  )
-}
+  return (
+    <form className={styles.searchForm} onSubmit={(e) => { e.preventDefault(); getApiData(); }}>
+      <label htmlFor='search'>recherche</label>
+      <input ref={barSearch} className={styles.searchBar} type='search' value={search} onChange={(event) => setSearch(event.target.value)}></input>
+      <button type='button' onClick={() => searchButton()}>search</button>
+      <button onClick={() => reload()} ref={buttonReload}>reload</button>
+    </form>
+    )
+} 
 
 export default SearchForm
